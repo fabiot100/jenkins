@@ -1,0 +1,30 @@
+version:  "3.9"
+
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile : Dockerfile
+    container_name: jenkins
+    user: root
+    volumes:
+      - ./jenkins:/var/jenkins_home
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./env/jenkins.env
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 5
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 500M
+    networks:
+      - jenkins_network
+
+networks:
+  jenkins_network: 
+    name: jenkins_network
