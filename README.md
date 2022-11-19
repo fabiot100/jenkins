@@ -8,7 +8,7 @@ Rename the **env/jenkins.env_example** file to **env/jenkins.env** and change th
 
 ## Deploy
 
-To deploy the container, just follow the command bellow:
+To deploy the container, just follow the command below:
 
 ```shell
 docker compose up -d
